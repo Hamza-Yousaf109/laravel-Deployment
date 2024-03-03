@@ -19,7 +19,7 @@ pipeline {
                sh '''
                  echo 123 | sudo -S rm -rf /var/www/html/laravel
                  echo 123 | sudo -S cp -r /var/lib/jenkins/workspace/laravel /var/www/html/
-                 cd /var/www/html
+                 cd /var/www/html/laravel
                  composer install
                  php artisan key:generate 
                '''
@@ -44,7 +44,6 @@ pipeline {
                // Deploy your application here
                // This could involve copying files to a server, restarting services, etc.
                sh '''
-               cd /var/www/html/ 
                echo 123 | sudo -S chown -R www-data:www-data /var/www/html/laravel/
                '''
               
