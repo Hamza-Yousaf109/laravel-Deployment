@@ -44,7 +44,7 @@ pipeline {
                // This could involve copying files to a server, restarting services, etc.
                sh '''
                echo 123 | sudo -S rm -rf /var/www/html/laravel
-               cp -r /var/lib/jenkins/workspace/laravel /var/www/html/
+               echo 123 | sudo -S cp -r /var/lib/jenkins/workspace/laravel /var/www/html/
                echo 123 | sudo -S chown -R www-data:www-data /var/www/html/laravel/
                '''
               
