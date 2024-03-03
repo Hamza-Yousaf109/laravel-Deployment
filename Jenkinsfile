@@ -20,8 +20,8 @@ pipeline {
                  echo 123 | sudo -S rm -rf /var/www/html/laravel
                  echo 123 | sudo -S cp -r /var/lib/jenkins/workspace/laravel /var/www/html/
                  cd /var/www/html
-                 echo 123 | sudo -S composer install
-                 echo 123 | sudo -S php artisan key:generate 
+                 composer install
+                 php artisan key:generate 
                '''
 
 
