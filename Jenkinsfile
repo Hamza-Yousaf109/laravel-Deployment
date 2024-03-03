@@ -18,9 +18,7 @@ pipeline {
                // sh 'mvn clean install'
                sh '''
                  cd /var/lib/jenkins/workspace/laravel
-                 composer install    
-                 
-                 
+                 composer install
                '''
 
 
@@ -45,6 +43,8 @@ pipeline {
                sh '''
                echo 123 | sudo -S rm -rf /var/www/html/laravel
                echo 123 | sudo -S cp -r /var/lib/jenkins/workspace/laravel /var/www/html/
+               cd /var/www/html/
+               echo 123 | sudo -S php artisan key:generate  
                echo 123 | sudo -S chown -R www-data:www-data /var/www/html/laravel/
                '''
               
