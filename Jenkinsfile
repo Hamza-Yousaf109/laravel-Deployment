@@ -18,7 +18,7 @@ pipeline {
                // sh 'mvn clean install'
                sh '''
                  cd /var/lib/jenkins/workspace/laravel
-                 sudo composer install    
+                 composer install    
                  
                  
                '''
