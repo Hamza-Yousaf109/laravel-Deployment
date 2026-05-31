@@ -133,6 +133,23 @@ jobs:
         with:
           name: public
 
+      - name: Validate EC2 secrets
+        run: |
+          if [ -z "${{ secrets.EC2_SSH_KEY }}" ]; then
+            echo "❌ Error: EC2_SSH_KEY secret is not configured"
+            echo "Please add EC2_SSH_KEY to your repository secrets"
+            exit 1
+          fi
+          if [ -z "${{ secrets.EC2_HOST }}" ]; then
+            echo "❌ Error: EC2_HOST secret is not configured"
+            exit 1
+          fi
+          if [ -z "${{ secrets.EC2_USER }}" ]; then
+            echo "❌ Error: EC2_USER secret is not configured"
+            exit 1
+          fi
+          echo "✅ All required secrets are configured"
+
       - name: Start SSH agent for EC2
         uses: webfactory/ssh-agent@v0.8.0
         with:
